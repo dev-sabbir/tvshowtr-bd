@@ -20,7 +20,11 @@ def add():
         title = request.form['title']
         print title
         rows = add_tv(title)
-        return redirect(url_for('hello'))
+        if rows is None:
+            msg="Don't insert wrong input. Try something like this: tt3107288"
+            return redirect(url_for('hello'))
+        else:
+            return redirect(url_for('hello'))
     else:
         msg = "Don't insert wrong input. Try something like this: tt3107288"
         return redirect(url_for('hello'))

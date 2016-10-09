@@ -59,6 +59,8 @@ def add_tv(title):
     # query for get the id of the latest inserted tv series
     get_id = 'SELECT * FROM tv_series WHERE name = ?'
     series_id = "";
+    if tags is None:
+        return None
     for tag in tags:
         name=tag.string
         name = name.strip()
