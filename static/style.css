@@ -1,0 +1,24 @@
+table{
+  text-align:center;
+  width:80%;
+  margin:10% auto;
+  margin-top:2%;
+}
+th{
+
+  padding:2%;
+  text-align:center;
+}
+td
+{
+  padding:2%;
+}
+
+form{
+  width:30%;
+  margin:0 auto;
+}
+.jumbotron
+{
+  text-align: center;
+}

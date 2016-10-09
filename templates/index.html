@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{%block title%}TV series Tracker{%endblock%}
+
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>TV Shows Tracker</h1>
+  <h4>-Track your favourite tv show's air date</h4>
+  <form action="{{url_for('add')}}" method = "POST">
+    <input type="text" name="title" placeholder="IMDB id for the tv show"><br>
+    <button class="btn btn-success" type="submit">Add title</button>
+  </form>
+</div>
+<div id="content">
+  <ul class="nav nav-tabs">
+    {% for rows in l %}
+    <li class="{% if loop.index is equalto 1 %}
+        active
+    {% endif %}" ><a href="#{{rows['id']}}" role="tab" data-toggle="tab">{{ rows['name'] }}</a></li>
+    {% endfor %}
+  </ul>
+  <div id="my-tab-content" class="tab-content clearfix">
+    {% for rows in l %}
+    <!-- {{ rows }} -->
+    <div class="tab-pane {% if loop.index is equalto 1 %}
+        active
+    {% endif %}" id="{{rows['id']}}" style="width:100%;">
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <th>Ep Name</th>
+            <th>Air Date</th>
+          </tr>
+        </thead>
+
+        {% for row in rows['episodes'] %}
+        <tr>
+          <td>{{ row[1]}}</td>
+          <td>{{ row[2]}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+  <script type="text/javascript">
+  jQuery(document).ready(function ($) {
+    $(".tabs").tabs();
+  });
+  </script>
+  {% endblock %}

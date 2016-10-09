@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<p>{{name}}</p>
+    <form action="{{url_for('add')}}" method = "POST">
+        <input type="text" name="title"><br>
+        <button type="submit">Add title</button>
+    </form>
+    <div id="content">
+    <ul class="nav nav-tabs">
+        {% for rows in l %}
+        <li><a href="{{rows['name']}}" role="tab" data-toggle="tab">{{ rows['name'] }}</a></li> 
+        {% endfor %}
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+        {% for rows in l %}
+        <!-- {{ rows }} -->
+    <div class="tab-pane" id="{{rows['name']}}">
+    <table border = 1>
+         <thead>
+            <td>Ep Name</td>
+            <td>Air Date</td>
+         </thead>
+
+         {% for row in rows['episodes'] %}
+            <tr>
+               <td>{{ row[1]}}</td>
+               <td>{{ row[2]}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+      </div>
+        {% endfor %}
+    
+</div>
+
+
+    <!-- {{ l }} -->
+    {% for rows in l %}
+        <!-- {{ rows }} -->
+    <h1>{{ rows['name'] }}</h1>
+    <table border = 1>
+         <thead>
+            <td>Ep Name</td>
+            <td>Air Date</td>
+         </thead>
+
+         {% for row in rows['episodes'] %}
+            <tr>
+               <td>{{ row[1]}}</td>
+               <td>{{ row[2]}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+{% endfor %}
+{% endblock %}
