@@ -9,7 +9,7 @@
   <h4>-Track your favourite tv show's air date</h4>
   <h5 id="err_msg">{% if msg!="" %}{{msg}}{% endif %}</h5>
   <form action="{{url_for('add')}}" method = "POST">
-    <input type="text" name="title" placeholder="IMDB id for the tv show"><br>
+    <input type="text" name="title" placeholder="IMDB id for the tv show. Example: tt3107288"><br>
     <button class="btn btn-success" type="submit">Add title</button>
   </form>
 </div>

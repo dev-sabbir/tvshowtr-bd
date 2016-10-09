@@ -26,3 +26,8 @@ form{
 {
     color:red;
 }
+input
+{
+    text-align:center;
+    width:100%;
+}
